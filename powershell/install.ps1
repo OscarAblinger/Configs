@@ -4,7 +4,7 @@ echo "==== Installing fonts"
 echo "--> Wait for installation to finish"
 git clone https://github.com/powerline/fonts.git temp_fonts
 .\temp_fonts\install.ps1
-rm -rf temp_fonts
+Remove-Item -path temp_fonts -recurse -force
 
 echo "==== Installing posh-git & oh-my-posh"
 Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
