@@ -8,10 +8,10 @@ Remove-Item -path temp_fonts -recurse -force
 
 echo "==== Installing posh-git & oh-my-posh"
 Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
-Install-Module -Name 'posh-git'
-Install-Module -Name 'oh-my-posh'
+Install-Module -Name 'posh-git' -AllowClobber
+Install-Module -Name 'oh-my-posh' -AllowClobber
 
 echo "==== Installing Get-ChildItemColor"
-Install-Module -Name 'Get-ChildItemColor'
+Install-Module -Name 'Get-ChildItemColor' -AllowClobber
 
 echo "==== Done. You can now use the config from this repository"
