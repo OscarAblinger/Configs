@@ -1,0 +1,27 @@
+[core]
+	autocrlf = true
+[user]
+	email = dev.ablinger@gmail.com
+	name = Oscar Ablinger
+[alias]
+	s = status
+	puu = push -u origin HEAD
+	pushf = push --force-with-lease
+
+	reb = !git rebase -i "$@" "$(git merge-base HEAD origin/master)"
+	reb = !git rebase -i "$@" "$(git merge-base HEAD origin/master)" --autosquash
+	fm = fetch origin master:master
+	ufm = pull --rebase origin master
+	lb = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=committerdate
+	gone = ! "git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D"
+
+
+	a = assign
+	assign = !bash -c '~/.gitscripts/assign -M -d "$(git merge-base HEAD main)" "$@"' -
+	assign-all = !bash -c '~/.gitscripts/assign -M "$@"' -
+
+	make-patch = format-patch -k
+	apply-patch = am -3 -k
+
+	gcc = gc --aggressive --prune=now
+	cleanslate = !git clean -fdxq && git gone && git gcc
